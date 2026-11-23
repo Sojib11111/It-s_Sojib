@@ -390,8 +390,9 @@ document.querySelectorAll('.faq-q').forEach(q => q.onclick = () => q.parentEleme
 const f = document.getElementById('cform');
 if (f) f.onsubmit = async e => { e.preventDefault();
   const fd = new FormData(f), msg = document.getElementById('formMsg'), btn = f.querySelector('button[type=submit]');
-  const C = D.contact || {}, mode = C.formMode || 'formsubmit', to = C.formEmail || P.email;
-  const fail = () => { msg.style.color = '#f87171'; msg.innerHTML = `Message could not be sent. Please email me directly at <a href="mailto:${esc(to)}" style="text-decoration:underline">${esc(to)}</a>`; };
+  const C = D.contact || {}, mode = C.formMode || 'formsubmit', to = C.formEmail || P.email, shown = P.email || to;
+  const fail = () => { msg.style.color = '#f87171'; msg.innerHTML = `Message could not be sent. Please email me directly at <a href="mailto:${esc(shown)}" style="text-decoration:underline">${esc(shown)}</a>`; };
+  if (fd.get('bot-field')) { msg.textContent = '✔ Thank you!'; f.reset(); return; }
   msg.style.color = ''; msg.textContent = 'Sending…'; btn.disabled = true;
   try {
     if (mode === 'netlify') {
@@ -399,8 +400,8 @@ if (f) f.onsubmit = async e => { e.preventDefault();
       if (!r.ok) throw 0; msg.textContent = '✔ Thank you! Your message has been sent.'; f.reset();
     } else if (mode === 'mailto') {
       const body = `Name: ${fd.get('name')}\nEmail: ${fd.get('email')}\n\n${fd.get('message')}`;
-      location.href = `mailto:${to}?subject=${encodeURIComponent(fd.get('subject')||'Portfolio Contact')}&body=${encodeURIComponent(body)}`;
-      msg.innerHTML = `Opening your email app… If nothing opens, email me at <a href="mailto:${esc(to)}" style="text-decoration:underline">${esc(to)}</a>`;
+      location.href = `mailto:${shown}?subject=${encodeURIComponent(fd.get('subject')||'Portfolio Contact')}&body=${encodeURIComponent(body)}`;
+      msg.innerHTML = `Opening your email app… If nothing opens, email me at <a href="mailto:${esc(shown)}" style="text-decoration:underline">${esc(shown)}</a>`;
     } else if (mode === 'web3forms') {
       if (!C.web3formsKey) throw 0;
       const r = await fetch('https://api.web3forms.com/submit', {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
@@ -410,7 +411,7 @@ if (f) f.onsubmit = async e => { e.preventDefault();
       msg.textContent = '✔ Thank you! Your message has been sent. I will get back to you soon.'; f.reset();
     } else {
       const r = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(to), {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body: JSON.stringify({name:fd.get('name'), email:fd.get('email'), _subject:'Portfolio: ' + (fd.get('subject')||'New message'), message:fd.get('message'), _replyto:fd.get('email'), _template:'table', _captcha:'false'})});
+        body: JSON.stringify({name:fd.get('name'), email:fd.get('email'), _subject:'Portfolio: ' + (fd.get('subject')||'New message'), message:fd.get('message'), _replyto:fd.get('email'), _template:'table', _captcha:'false', _honey:fd.get('bot-field')||''})});
       const j = await r.json().catch(() => ({}));
       if (!r.ok || String(j.success) !== 'true') { if (j.message) { msg.style.color = '#fbbf24'; msg.textContent = j.message; } else fail(); }
       else { msg.textContent = '✔ Thank you! Your message has been sent. I will get back to you soon.'; f.reset(); }

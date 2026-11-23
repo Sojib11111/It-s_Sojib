@@ -548,7 +548,7 @@ window.SITE_DATA = {
     "heading": "Let's Work Together",
     "text": "Have a project, idea or opportunity in mind? Send me a message and I'll get back to you soon.",
     "formMode": "formsubmit",
-    "formEmail": "sojibbiswas200@gmail.com",
+    "formEmail": "bc0a98607b8c314ee8f95026cc4fe93e",
     "web3formsKey": ""
   },
   "footer": {
