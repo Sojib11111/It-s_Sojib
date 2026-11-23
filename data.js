@@ -6,7 +6,7 @@
 // =====================================================================
 window.SITE_DATA = {
   "settings": {
-    "siteTitle": "Sojib Kumar Biswas | Executive IT (Software Engineer)",
+    "siteTitle": "Sojib Kumar Biswas | Software & Automation Engineer",
     "logoText": "Sojib.",
     "accentColor": "#22d3ee",
     "accentColor2": "#a78bfa",
@@ -26,11 +26,9 @@ window.SITE_DATA = {
   "profile": {
     "greeting": "Hello, I'm",
     "name": "Sojib Kumar Biswas",
-    "title": "Executive IT (Software Engineer)",
+    "title": "Software & Automation Engineer",
     "typingWords": [
-      "AI & Automation Engineer",
-      "Python Developer",
-      "Web Developer",
+      "Software & Automation Engineer",
       "Data Analyst"
     ],
     "tagline": "I build enterprise automation, monitoring and AI solutions that turn raw data into real business value.",
@@ -83,7 +81,7 @@ window.SITE_DATA = {
   "about": {
     "heading": "About Me",
     "paragraphs": [
-      "I'm an IT Executive (Software Engineer) at Masco Group and a CSE graduate from Daffodil International University. I build practical, production-ready solutions that sit where IT operations, data and AI meet.",
+      "I'm an Executive, IT (Software & Automation Engineer) at Masco Group and a CSE graduate from Daffodil International University. I build practical, production-ready solutions that sit where IT operations, data and AI meet.",
       "At work I have built and deployed MLog, a workstation activity monitoring system running on 2000+ computers, and a centralized print monitoring system covering 200+ Ricoh, Canon and Konica Minolta printers. Both are powered by Python agents, REST APIs, Oracle Database and Oracle APEX dashboards. I also built the MASCO Election Portal, a group-wide web system for running committee elections across Masco Group's units, and a real-time fabric defect detection system with YOLOv8, while supporting day-to-day IT infrastructure across the organization.",
       "Beyond that, I turn raw data into insight with Power BI, Tableau, Streamlit and Python, and train deep learning models such as FreshVision AI (97% accuracy). I enjoy solving real business problems end to end, from data collection and automation to dashboards, web apps and AI."
     ],
@@ -128,7 +126,7 @@ window.SITE_DATA = {
   },
   "experience": [
     {
-      "role": "Executive, IT (Software Engineer)",
+      "role": "Executive, IT (Software & Automation Engineer)",
       "company": "Masco Group",
       "location": "Uttara, Dhaka, Bangladesh",
       "period": "Jun 2026 – Present",
