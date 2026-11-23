@@ -548,7 +548,8 @@ window.SITE_DATA = {
     "heading": "Let's Work Together",
     "text": "Have a project, idea or opportunity in mind? Send me a message and I'll get back to you soon.",
     "formMode": "formsubmit",
-    "formEmail": "sojibbiswas200@gmail.com"
+    "formEmail": "sojibbiswas200@gmail.com",
+    "web3formsKey": ""
   },
   "footer": {
     "text": "© 2026 Sojib Kumar Biswas. All rights reserved."
