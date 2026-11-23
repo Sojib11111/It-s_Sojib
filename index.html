@@ -148,6 +148,7 @@ form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 form input,form textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;margin-bottom:16px;outline:none;transition:.2s}
 form input:focus,form textarea:focus{border-color:var(--accent)}
 form textarea{min-height:150px;resize:vertical}
+form input:-webkit-autofill,form input:-webkit-autofill:hover,form input:-webkit-autofill:focus{-webkit-text-fill-color:var(--text);-webkit-box-shadow:0 0 0 1000px var(--bg) inset;caret-color:var(--text);transition:background-color 9999s}
 .form-msg{margin-top:12px;font-size:.9rem;color:var(--accent)}
 @media(max-width:900px){.contact{grid-template-columns:1fr}}
 @media(max-width:520px){form .row{grid-template-columns:1fr;gap:0}section{padding:72px 0}.grid{grid-template-columns:1fr}}
