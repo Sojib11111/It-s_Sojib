@@ -238,7 +238,7 @@ window.SITE_DATA = {
       {
         "title": "FreshVision AI: Fruit Freshness Detection",
         "category": "AI / ML",
-        "image": "assets/freshvision.jpg",
+        "image": "assets/freshvision.png",
         "tools": "Python, TensorFlow/Keras, EfficientNetB3, Vision Transformer, Gradio",
         "description": "Hybrid EfficientNetB3 + ViT model classifying 10 fresh/rotten fruit categories with 97% validation accuracy, confidence thresholding for unknown objects, deployed as a Gradio app on Hugging Face Spaces.",
         "github": "https://github.com/Sojib11111/Deep-Learning-Based-Fruit-Freshness-Detection-Using-CNN",
