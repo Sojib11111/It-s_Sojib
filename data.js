@@ -376,15 +376,6 @@ window.SITE_DATA = {
         "description": "Front-end for an online shoe store website.",
         "github": "https://github.com/Sojib11111/StepInStyle-",
         "live": ""
-      },
-      {
-        "title": "IT Operations Reporting Suite",
-        "category": "Data & BI",
-        "image": "",
-        "tools": "Oracle APEX, SQL/PL-SQL, Scheduler Jobs",
-        "description": "Automated APEX reports and email digests for user activity, asset/inventory tracking, ticket monitoring and management reporting.",
-        "github": "",
-        "live": ""
       }
     ]
   },
