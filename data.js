@@ -220,7 +220,7 @@ window.SITE_DATA = {
         "category": "Automation",
         "image": "assets/printer.jpg",
         "tools": "Python, REST API, Oracle Database, Oracle APEX, Web Scraping, Networking",
-        "description": "Centralized print monitoring across 17 business units and 160+ Ricoh, Canon and Konica Minolta printers. A web control panel runs per-unit collectors (start/restart/stop), shows live printer status, alerts for paper errors and offline devices, 14-day print volume, pages by unit and top printers, with a scraper builder, printer drivers and config backups. Jobs flow via REST APIs into Oracle with cost reports and Excel export.",
+        "description": "Centralized print monitoring across 17 business units and 200+ Ricoh, Canon and Konica Minolta printers. A web control panel runs per-unit collectors (start/restart/stop), shows live printer status, alerts for paper errors and offline devices, 14-day print volume, pages by unit and top printers, with a scraper builder, printer drivers and config backups. Jobs flow via REST APIs into Oracle with cost reports and Excel export.",
         "github": "",
         "live": ""
       },
