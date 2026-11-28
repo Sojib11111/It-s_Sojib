@@ -112,9 +112,14 @@ nav{display:flex;align-items:center;justify-content:space-between;height:72px}
 .filters button.active,.filters button:hover{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#0b1120;border-color:transparent}
 .proj{padding:0;overflow:hidden;display:flex;flex-direction:column}
 .proj .thumb{aspect-ratio:16/9;padding:0;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 35%,var(--card)),color-mix(in srgb,var(--accent2) 35%,var(--card)));display:grid;place-items:center;font-size:1.4rem;font-weight:700;color:#fff;text-align:center;padding:20px;overflow:hidden}
-.proj .thumb img{width:100%;height:100%;object-fit:cover;object-position:top;transition:.5s}
+.proj .thumb img{width:100%;height:100%;object-fit:contain;transition:.5s;cursor:zoom-in}
+.proj .thumb.has-img{background:color-mix(in srgb,var(--bg) 70%,var(--card));padding:10px}
+.lightbox{position:fixed;inset:0;z-index:300;background:rgba(5,8,18,.92);display:none;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:90vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lightbox span{position:absolute;top:14px;right:22px;color:#fff;font-size:2rem;cursor:pointer}
 .proj .thumb .ph{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:1.05rem;padding:16px}.proj .thumb .ph span{font-size:2.8rem}
-.proj:hover .thumb img{transform:scale(1.06)}
+.proj:hover .thumb img{transform:scale(1.03)}
 .proj .body{padding:22px;display:flex;flex-direction:column;flex:1}
 .proj .cat{font-size:.75rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
 .proj .tools{font-size:.82rem;color:var(--muted);margin:6px 0 10px}
@@ -282,7 +287,7 @@ if (show('projects')) { const PR = D.projects||{}; const cats = arr(PR.categorie
 h += `<section id="projects"><div class="container">${head('Projects','Things I have built and deployed')}
 <div class="filters reveal">${cats.map((c,i)=>`<button class="${i?'':'active'}" data-cat="${esc(c)}">${esc(c)}</button>`).join('')}</div>
 <div class="grid" id="projGrid">${arr(PR.items).map(p=>`<div class="card proj reveal" data-cat="${esc(p.category)}">
-  <div class="thumb">${p.image?`<img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy">`:`<div class="ph"><span>${({'Automation':'⚙️','AI / ML':'🧠','Data & BI':'📊','Web & Network':'🌐'})[p.category]||'💡'}</span>${esc(p.title)}</div>`}</div>
+  <div class="thumb${p.image?' has-img':''}">${p.image?`<img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy">`:`<div class="ph"><span>${({'Automation':'⚙️','AI / ML':'🧠','Data & BI':'📊','Web & Network':'🌐'})[p.category]||'💡'}</span>${esc(p.title)}</div>`}</div>
   <div class="body"><span class="cat">${esc(p.category)}</span><h4>${esc(p.title)}</h4>
   ${p.tools?`<div class="tools"><b>Tools:</b> ${esc(p.tools)}</div>`:''}<p>${esc(p.description)}</p>
   <div class="links">${p.github?`<a class="btn btn-outline btn-sm" href="${esc(p.github)}" target="_blank" rel="noopener">GitHub</a>`:''}${p.live?`<a class="btn btn-primary btn-sm" href="${esc(p.live)}" target="_blank" rel="noopener">Live Demo</a>`:''}</div></div>
@@ -382,6 +387,13 @@ document.querySelectorAll('.filters button').forEach((b, i) => b.onclick = () =>
 });
 if (moreBtn) moreBtn.onclick = () => { expanded = !expanded; applyProj(); if (!expanded) document.getElementById('projects').scrollIntoView(); };
 applyProj();
+
+// lightbox for project images
+const lb = document.createElement('div'); lb.className = 'lightbox'; lb.innerHTML = '<span aria-label="Close">×</span><img alt="">';
+document.body.appendChild(lb);
+document.querySelectorAll('#projGrid .thumb img').forEach(img => img.onclick = () => { lb.querySelector('img').src = img.src; lb.querySelector('img').alt = img.alt; lb.classList.add('open'); });
+lb.onclick = () => lb.classList.remove('open');
+addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
 
 // faq
 document.querySelectorAll('.faq-q').forEach(q => q.onclick = () => q.parentElement.classList.toggle('open'));
